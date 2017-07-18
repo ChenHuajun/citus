@@ -10,3 +10,5 @@ test: isolation_concurrent_dml isolation_data_migration
 test: isolation_drop_shards isolation_copy_placement_vs_modification
 test: isolation_insert_vs_vacuum
 test: isolation_distributed_transaction_id
+# TODO: parallelize
+test: isolation_progress_monitoring 
