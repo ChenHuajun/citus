@@ -588,8 +588,8 @@ RemoveNodeFromCluster(char *nodeName, int32 nodePort)
 	if (WorkerNodeIsPrimary(workerNode) &&
 		NodeGroupHasShardPlacements(workerNode->groupId, onlyConsiderActivePlacements))
 	{
-		ereport(ERROR, (errmsg("you cannot remove the primary node of a group which "
-							   "has shard placements")));
+		ereport(ERROR, (errmsg("you cannot remove the primary node of a node group "
+							   "which has shard placements")));
 	}
 
 	DeleteNodeRow(nodeName, nodePort);

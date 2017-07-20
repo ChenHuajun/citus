@@ -29,6 +29,7 @@ FROM pg_dist_placement placement INNER JOIN pg_dist_node node ON (
 CREATE OR REPLACE FUNCTION citus.pg_dist_node_trigger_func()
 RETURNS TRIGGER AS $$
   BEGIN
+    LOCK TABLE pg_dist_node IN SHARE ROW EXCLUSIVE MODE;
     IF (TG_OP = 'INSERT') THEN
 	IF NEW.noderole = 'primary'
 	   AND EXISTS (SELECT 1 FROM pg_dist_node WHERE groupid = NEW.groupid AND

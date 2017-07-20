@@ -442,9 +442,7 @@ ResolveGroupShardPlacement(GroupShardPlacement *groupShardPlacement,
 
 	if (workerNode == NULL && groupContainsNodes)
 	{
-		ereport(ERROR, (errmsg("group %u does not have a primary node", groupId),
-						errdetail("the primary node may be in the process of "
-								  "failing over")));
+		ereport(ERROR, (errmsg("node group %u does not have a primary node", groupId)));
 	}
 
 	/* copy everything into shardPlacement but preserve the header */
